@@ -1,0 +1,610 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Developer Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+<div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">M</div>
+            <div>
+                <h2>MONARCH</h2>
+                <span>DEVELOPER PORTFOLIO</span>
+            </div>
+        </div>
+
+        <div class="profile-mini">
+            <div class="avatar">M</div>
+            <div>
+                <h3>Manish Gowda</h3>
+                <p>Full Stack Developer</p>
+            </div>
+        </div>
+
+        <div class="nav-label">MAIN MENU</div>
+
+        <nav class="navigation">
+            <button class="nav-link active" data-page="dashboard">
+                <i class="fa-solid fa-border-all"></i>
+                <span>Overview</span>
+            </button>
+
+            <button class="nav-link" data-page="about">
+                <i class="fa-regular fa-user"></i>
+                <span>About Me</span>
+            </button>
+
+            <button class="nav-link" data-page="skills">
+                <i class="fa-solid fa-layer-group"></i>
+                <span>My Skills</span>
+            </button>
+
+            <button class="nav-link" data-page="projects">
+                <i class="fa-solid fa-code"></i>
+                <span>Projects</span>
+            </button>
+
+            <button class="nav-link" data-page="experience">
+                <i class="fa-solid fa-award"></i>
+                <span>Experience</span>
+            </button>
+
+            <button class="nav-link" data-page="contact">
+                <i class="fa-regular fa-envelope"></i>
+                <span>Contact</span>
+            </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="availability">
+                <span class="status-dot"></span>
+                Available for opportunities
+            </div>
+
+            <p>© 2026 MONARCH</p>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div class="topbar-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <div>
+                    <p class="breadcrumb">PORTFOLIO / <span id="breadcrumb">OVERVIEW</span></p>
+                    <h2 id="page-heading">Dashboard Overview</h2>
+                </div>
+            </div>
+
+            <div class="topbar-right">
+                <div class="date-display">
+                    <i class="fa-regular fa-calendar"></i>
+                    <span id="currentDate"></span>
+                </div>
+
+                <button class="icon-button" id="themeToggle" title="Toggle appearance">
+                    <i class="fa-regular fa-moon"></i>
+                </button>
+
+                <div class="top-avatar">M</div>
+            </div>
+
+        </header>
+
+
+        <!-- PAGE CONTENT -->
+        <div class="content-area">
+
+            <!-- DASHBOARD PAGE -->
+            <section class="page active" id="dashboard">
+
+                <div class="welcome-banner">
+
+                    <div class="welcome-content">
+                        <span class="eyebrow">WELCOME TO MY DIGITAL SPACE</span>
+
+                        <h1>Crafting Digital<br>
+                            <span>Experiences.</span>
+                        </h1>
+
+                        <p>
+                            Hello, I'm Manish. A technology enthusiast
+                            passionate about building elegant digital
+                            products and meaningful experiences.
+                        </p>
+
+                        <div class="welcome-actions">
+                            <button class="gold-button" data-navigate="projects">
+                                Explore Projects
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </button>
+
+                            <button class="outline-button" data-navigate="contact">
+                                Contact Me
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="welcome-visual">
+                        <div class="orbit orbit-one"></div>
+                        <div class="orbit orbit-two"></div>
+
+                        <div class="visual-center">
+                            <span>M</span>
+                        </div>
+
+                        <div class="floating-tag tag-one">
+                            <i class="fa-brands fa-js"></i> JavaScript
+                        </div>
+
+                        <div class="floating-tag tag-two">
+                            <i class="fa-brands fa-cuttlefish"></i> C++
+                        </div>
+
+                        <div class="floating-tag tag-three">
+                            <i class="fa-solid fa-code"></i> Developer
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- STATISTICS -->
+                <div class="section-heading">
+                    <div>
+                        <span class="eyebrow">QUICK OVERVIEW</span>
+                        <h2>Portfolio Statistics</h2>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <div class="stat-icon"><i class="fa-solid fa-folder-open"></i></div>
+                            <span class="stat-tag">Portfolio</span>
+                        </div>
+                        <h2 class="counter" data-target="6">0</h2>
+                        <p>Projects Built</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <div class="stat-icon"><i class="fa-solid fa-code"></i></div>
+                            <span class="stat-tag">Technical</span>
+                        </div>
+                        <h2 class="counter" data-target="8">0</h2>
+                        <p>Technologies Learning</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <div class="stat-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                            <span class="stat-tag">Education</span>
+                        </div>
+                        <h2>2nd</h2>
+                        <p>Year B.Tech CSE</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-top">
+                            <div class="stat-icon"><i class="fa-solid fa-bullseye"></i></div>
+                            <span class="stat-tag">Focus</span>
+                        </div>
+                        <h2>DSA</h2>
+                        <p>Current Learning Goal</p>
+                    </div>
+
+                </div>
+
+
+                <!-- LOWER DASHBOARD -->
+                <div class="dashboard-grid">
+
+                    <div class="panel skills-panel">
+
+                        <div class="panel-heading">
+                            <div>
+                                <span class="eyebrow">TECHNICAL EXPERTISE</span>
+                                <h2>Skill Overview</h2>
+                            </div>
+                            <button class="text-button" data-navigate="skills">View All</button>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>HTML & CSS</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-fill" data-width="85%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>JavaScript</span>
+                                <span>65%</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-fill" data-width="65%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>C++</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-fill" data-width="70%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>React</span>
+                                <span>45%</span>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-fill" data-width="45%"></div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="panel focus-panel">
+
+                        <div class="panel-heading">
+                            <div>
+                                <span class="eyebrow">CURRENT DIRECTION</span>
+                                <h2>Learning Focus</h2>
+                            </div>
+                            <i class="fa-solid fa-compass panel-icon"></i>
+                        </div>
+
+                        <div class="focus-item">
+                            <div class="focus-icon"><i class="fa-solid fa-code"></i></div>
+                            <div>
+                                <h3>Data Structures</h3>
+                                <p>Arrays, Sorting, Searching</p>
+                            </div>
+                        </div>
+
+                        <div class="focus-item">
+                            <div class="focus-icon"><i class="fa-solid fa-globe"></i></div>
+                            <div>
+                                <h3>Web Development</h3>
+                                <p>Frontend and Backend</p>
+                            </div>
+                        </div>
+
+                        <div class="focus-item">
+                            <div class="focus-icon"><i class="fa-solid fa-database"></i></div>
+                            <div>
+                                <h3>Database Systems</h3>
+                                <p>SQL and DBMS</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ABOUT PAGE -->
+            <section class="page" id="about">
+
+                <div class="page-intro">
+                    <span class="eyebrow">GET TO KNOW ME</span>
+                    <h1>Beyond the <span>Code.</span></h1>
+                    <p>Technology, curiosity and continuous learning define my journey.</p>
+                </div>
+
+                <div class="panel about-card">
+                    <div class="about-avatar">M</div>
+                    <div>
+                        <h2>Manish Gowda</h2>
+                        <p class="gold-text">Computer Science & Engineering Student</p>
+                        <p>
+                            I am a B.Tech CSE student with an interest in
+                            software development, data structures, web
+                            technologies and building practical solutions.
+                            I enjoy exploring new technologies and turning
+                            ideas into working projects.
+                        </p>
+                        <div class="about-details">
+                            <div><span>Education</span><strong>B.Tech CSE (IoT)</strong></div>
+                            <div><span>University</span><strong>REVA University</strong></div>
+                            <div><span>Interests</span><strong>DSA & Web Development</strong></div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+
+            <!-- SKILLS PAGE -->
+            <section class="page" id="skills">
+
+                <div class="page-intro">
+                    <span class="eyebrow">MY TECHNICAL TOOLKIT</span>
+                    <h1>Skills & <span>Expertise.</span></h1>
+                    <p>Technologies I use and skills I am currently developing.</p>
+                </div>
+
+                <div class="skills-page-grid">
+
+                    <div class="panel">
+                        <h2>Programming</h2>
+
+                        <div class="skill-item">
+                            <div class="skill-info"><span>C</span><span>75%</span></div>
+                            <div class="progress-track"><div class="progress-fill" data-width="75%"></div></div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info"><span>C++</span><span>70%</span></div>
+                            <div class="progress-track"><div class="progress-fill" data-width="70%"></div></div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info"><span>JavaScript</span><span>65%</span></div>
+                            <div class="progress-track"><div class="progress-fill" data-width="65%"></div></div>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <h2>Web Development</h2>
+
+                        <div class="skill-item">
+                            <div class="skill-info"><span>HTML</span><span>85%</span></div>
+                            <div class="progress-track"><div class="progress-fill" data-width="85%"></div></div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info"><span>CSS</span><span>80%</span></div>
+                            <div class="progress-track"><div class="progress-fill" data-width="80%"></div></div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info"><span>React</span><span>45%</span></div>
+                            <div class="progress-track"><div class="progress-fill" data-width="45%"></div></div>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <h2>Tools & Database</h2>
+
+                        <div class="skill-item">
+                            <div class="skill-info"><span>Git & GitHub</span><span>75%</span></div>
+                            <div class="progress-track"><div class="progress-fill" data-width="75%"></div></div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info"><span>MySQL</span><span>65%</span></div>
+                            <div class="progress-track"><div class="progress-fill" data-width="65%"></div></div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info"><span>VS Code</span><span>85%</span></div>
+                            <div class="progress-track"><div class="progress-fill" data-width="85%"></div></div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- PROJECTS PAGE -->
+            <section class="page" id="projects">
+
+                <div class="page-intro">
+                    <span class="eyebrow">SELECTED WORK</span>
+                    <h1>Projects & <span>Creations.</span></h1>
+                    <p>A collection of ideas transformed into digital experiences.</p>
+                </div>
+
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All Projects</button>
+                    <button class="filter-btn" data-filter="web">Web Development</button>
+                    <button class="filter-btn" data-filter="app">Applications</button>
+                </div>
+
+                <div class="projects-grid">
+
+                    <div class="project-card" data-category="web">
+                        <div class="project-visual visual-one">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <div class="project-content">
+                            <span class="project-type">WEB DEVELOPMENT</span>
+                            <h2>REVORA</h2>
+                            <p>Student-faculty document submission and physical signature coordination platform.</p>
+                            <div class="tech-tags"><span>React</span><span>Supabase</span><span>CSS</span></div>
+                            <a href="#" class="project-link">View Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="app">
+                        <div class="project-visual visual-two">
+                            <i class="fa-solid fa-dumbbell"></i>
+                        </div>
+                        <div class="project-content">
+                            <span class="project-type">APPLICATION</span>
+                            <h2>Gym Management</h2>
+                            <p>A membership management system with member records and administrative features.</p>
+                            <div class="tech-tags"><span>JavaScript</span><span>Supabase</span><span>CSS</span></div>
+                            <a href="#" class="project-link">View Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="web">
+                        <div class="project-visual visual-three">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <div class="project-content">
+                            <span class="project-type">WEB DEVELOPMENT</span>
+                            <h2>Developer Portfolio</h2>
+                            <p>A personal digital space showcasing skills, projects and development journey.</p>
+                            <div class="tech-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+                            <a href="#" class="project-link">View Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- EXPERIENCE PAGE -->
+            <section class="page" id="experience">
+
+                <div class="page-intro">
+                    <span class="eyebrow">MY JOURNEY</span>
+                    <h1>Education & <span>Growth.</span></h1>
+                    <p>Every step is part of a continuous learning journey.</p>
+                </div>
+
+                <div class="panel timeline-panel">
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <span class="eyebrow">CURRENT</span>
+                        <h2>B.Tech – Computer Science & Engineering</h2>
+                        <h3>REVA University</h3>
+                        <p>Studying Computer Science with an interest in IoT, programming, DSA and software development.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <span class="eyebrow">DEVELOPMENT</span>
+                        <h2>Programming & DSA</h2>
+                        <h3>Continuous Learning</h3>
+                        <p>Practising C++, problem solving, algorithms, data structures and programming fundamentals.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <span class="eyebrow">PROJECT WORK</span>
+                        <h2>Web Development Projects</h2>
+                        <h3>Personal & Team Projects</h3>
+                        <p>Building websites and applications using modern development tools and technologies.</p>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- CONTACT PAGE -->
+            <section class="page" id="contact">
+
+                <div class="page-intro">
+                    <span class="eyebrow">LET'S CONNECT</span>
+                    <h1>Start a <span>Conversation.</span></h1>
+                    <p>Have an idea, opportunity or collaboration in mind?</p>
+                </div>
+
+                <div class="contact-grid">
+
+                    <div class="panel contact-info">
+                        <h2>Get in Touch</h2>
+                        <p>Feel free to reach out for collaborations, projects or professional conversations.</p>
+
+                        <div class="contact-method">
+                            <i class="fa-regular fa-envelope"></i>
+                            <div>
+                                <span>Email</span>
+                                <p>yourmail@example.com</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-method">
+                            <i class="fa-brands fa-github"></i>
+                            <div>
+                                <span>GitHub</span>
+                                <p>github.com/yourusername</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-method">
+                            <i class="fa-brands fa-linkedin"></i>
+                            <div>
+                                <span>LinkedIn</span>
+                                <p>linkedin.com/in/yourusername</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form class="panel contact-form" id="contactForm">
+
+                        <h2>Send a Message</h2>
+
+                        <label>Your Name</label>
+                        <input type="text" id="senderName" placeholder="Enter your name" required>
+
+                        <label>Email Address</label>
+                        <input type="email" id="senderEmail" placeholder="Enter your email" required>
+
+                        <label>Message</label>
+                        <textarea id="senderMessage" rows="5" placeholder="Write your message..." required></textarea>
+
+                        <button type="submit" class="gold-button">
+                            Send Message <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+
+                        <p id="formMessage" class="form-message"></p>
+
+                    </form>
+
+                </div>
+
+            </section>
+
+            <footer class="footer">
+                <p>Designed with precision & passion.</p>
+                <span>MONARCH © 2026</span>
+            </footer>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
