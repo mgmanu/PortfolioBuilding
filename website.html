@@ -1,19 +1,18 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en">git add
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Developer Dashboard</title>
+    <meta name="theme-color" content="#100f0e">
+    <title>MONARCH | Developer Portfolio</title>
 
     <link rel="stylesheet" href="style.css">
 
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 
@@ -30,19 +29,24 @@
                 <h2>MONARCH</h2>
                 <span>DEVELOPER PORTFOLIO</span>
             </div>
+            <button class="mobile-close" id="mobileClose">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
         </div>
 
         <div class="profile-mini">
             <div class="avatar">M</div>
             <div>
                 <h3>Manish Gowda</h3>
-                <p>Full Stack Developer</p>
+                <p>Developer in Progress</p>
             </div>
+            <span class="online-dot"></span>
         </div>
 
-        <div class="nav-label">MAIN MENU</div>
+        <div class="nav-label">WORKSPACE</div>
 
         <nav class="navigation">
+
             <button class="nav-link active" data-page="dashboard">
                 <i class="fa-solid fa-border-all"></i>
                 <span>Overview</span>
@@ -61,6 +65,7 @@
             <button class="nav-link" data-page="projects">
                 <i class="fa-solid fa-code"></i>
                 <span>Projects</span>
+                <span class="nav-count">03</span>
             </button>
 
             <button class="nav-link" data-page="experience">
@@ -72,15 +77,30 @@
                 <i class="fa-regular fa-envelope"></i>
                 <span>Contact</span>
             </button>
+
         </nav>
 
         <div class="sidebar-bottom">
+
             <div class="availability">
                 <span class="status-dot"></span>
                 Available for opportunities
             </div>
 
-            <p>© 2026 MONARCH</p>
+            <div class="sidebar-socials">
+                <a href="https://github.com/" target="_blank" aria-label="GitHub">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/" target="_blank" aria-label="LinkedIn">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="mailto:yourmail@example.com" aria-label="Email">
+                    <i class="fa-regular fa-envelope"></i>
+                </a>
+            </div>
+
+            <p>MONARCH © 2026</p>
+
         </div>
 
     </aside>
@@ -93,44 +113,106 @@
         <header class="topbar">
 
             <div class="topbar-left">
+
                 <button class="menu-toggle" id="menuToggle">
                     <i class="fa-solid fa-bars"></i>
                 </button>
 
                 <div>
-                    <p class="breadcrumb">PORTFOLIO / <span id="breadcrumb">OVERVIEW</span></p>
+                    <p class="breadcrumb">
+                        WORKSPACE / <span id="breadcrumb">OVERVIEW</span>
+                    </p>
                     <h2 id="page-heading">Dashboard Overview</h2>
                 </div>
+
             </div>
 
             <div class="topbar-right">
-                <div class="date-display">
-                    <i class="fa-regular fa-calendar"></i>
-                    <span id="currentDate"></span>
+
+                <button class="search-trigger" id="searchTrigger">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <span>Search anything...</span>
+                    <kbd>Ctrl K</kbd>
+                </button>
+
+                <div class="notification-wrapper">
+
+                    <button class="icon-button" id="notificationBtn" aria-label="Notifications">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="notification-dot"></span>
+                    </button>
+
+                    <div class="notification-panel" id="notificationPanel">
+
+                        <div class="notification-heading">
+                            <h3>Notifications</h3>
+                            <button id="clearNotifications">Clear all</button>
+                        </div>
+
+                        <div class="notification-list">
+
+                            <div class="notification-item">
+                                <i class="fa-solid fa-code"></i>
+                                <div>
+                                    <strong>Portfolio update</strong>
+                                    <p>Welcome to the Monarch dashboard.</p>
+                                    <small>Just now</small>
+                                </div>
+                            </div>
+
+                            <div class="notification-item">
+                                <i class="fa-solid fa-lightbulb"></i>
+                                <div>
+                                    <strong>Learning focus</strong>
+                                    <p>Keep developing your skills.</p>
+                                    <small>Today</small>
+                                </div>
+                            </div>
+
+                            <div class="notification-item">
+                                <i class="fa-solid fa-folder"></i>
+                                <div>
+                                    <strong>Projects</strong>
+                                    <p>Explore the featured projects.</p>
+                                    <small>Today</small>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <p class="notification-empty" id="notificationEmpty">
+                            No notifications available.
+                        </p>
+
+                    </div>
+
                 </div>
 
-                <button class="icon-button" id="themeToggle" title="Toggle appearance">
+                <button class="icon-button" id="themeToggle" aria-label="Change theme">
                     <i class="fa-regular fa-moon"></i>
                 </button>
 
                 <div class="top-avatar">M</div>
+
             </div>
 
         </header>
 
 
-        <!-- PAGE CONTENT -->
+        <!-- CONTENT -->
         <div class="content-area">
 
-            <!-- DASHBOARD PAGE -->
+            <!-- DASHBOARD -->
             <section class="page active" id="dashboard">
 
                 <div class="welcome-banner">
 
                     <div class="welcome-content">
+
                         <span class="eyebrow">WELCOME TO MY DIGITAL SPACE</span>
 
-                        <h1>Crafting Digital<br>
+                        <h1>
+                            Crafting Digital<br>
                             <span>Experiences.</span>
                         </h1>
 
@@ -141,6 +223,7 @@
                         </p>
 
                         <div class="welcome-actions">
+
                             <button class="gold-button" data-navigate="projects">
                                 Explore Projects
                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
@@ -149,12 +232,21 @@
                             <button class="outline-button" data-navigate="contact">
                                 Contact Me
                             </button>
+
                         </div>
+
+                        <div class="hero-caption">
+                            <span class="hero-line"></span>
+                            <span>DESIGN. DEVELOP. INNOVATE.</span>
+                        </div>
+
                     </div>
 
                     <div class="welcome-visual">
+
                         <div class="orbit orbit-one"></div>
                         <div class="orbit orbit-two"></div>
+                        <div class="orbit orbit-three"></div>
 
                         <div class="visual-center">
                             <span>M</span>
@@ -165,12 +257,13 @@
                         </div>
 
                         <div class="floating-tag tag-two">
-                            <i class="fa-brands fa-cuttlefish"></i> C++
+                            <i class="fa-solid fa-code"></i> C++
                         </div>
 
                         <div class="floating-tag tag-three">
-                            <i class="fa-solid fa-code"></i> Developer
+                            <i class="fa-solid fa-laptop-code"></i> Developer
                         </div>
+
                     </div>
 
                 </div>
@@ -182,44 +275,129 @@
                         <span class="eyebrow">QUICK OVERVIEW</span>
                         <h2>Portfolio Statistics</h2>
                     </div>
+                    <span class="live-label">
+                        <span class="status-dot"></span> LIVE DASHBOARD
+                    </span>
                 </div>
+
 
                 <div class="stats-grid">
 
-                    <div class="stat-card">
+                    <div class="stat-card interactive-card">
                         <div class="stat-top">
                             <div class="stat-icon"><i class="fa-solid fa-folder-open"></i></div>
-                            <span class="stat-tag">Portfolio</span>
+                            <span class="stat-tag">PORTFOLIO</span>
                         </div>
                         <h2 class="counter" data-target="6">0</h2>
                         <p>Projects Built</p>
+                        <span class="stat-footer">Personal & academic work</span>
                     </div>
 
-                    <div class="stat-card">
+                    <div class="stat-card interactive-card">
                         <div class="stat-top">
                             <div class="stat-icon"><i class="fa-solid fa-code"></i></div>
-                            <span class="stat-tag">Technical</span>
+                            <span class="stat-tag">TECHNICAL</span>
                         </div>
                         <h2 class="counter" data-target="8">0</h2>
                         <p>Technologies Learning</p>
+                        <span class="stat-footer">Continuously improving</span>
                     </div>
 
-                    <div class="stat-card">
+                    <div class="stat-card interactive-card">
                         <div class="stat-top">
                             <div class="stat-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-                            <span class="stat-tag">Education</span>
+                            <span class="stat-tag">EDUCATION</span>
                         </div>
                         <h2>2nd</h2>
                         <p>Year B.Tech CSE</p>
+                        <span class="stat-footer">REVA University</span>
                     </div>
 
-                    <div class="stat-card">
+                    <div class="stat-card interactive-card">
                         <div class="stat-top">
                             <div class="stat-icon"><i class="fa-solid fa-bullseye"></i></div>
-                            <span class="stat-tag">Focus</span>
+                            <span class="stat-tag">CURRENT FOCUS</span>
                         </div>
                         <h2>DSA</h2>
-                        <p>Current Learning Goal</p>
+                        <p>Learning Goal</p>
+                        <span class="stat-footer">Problem solving & algorithms</span>
+                    </div>
+
+                </div>
+
+
+                <!-- ANALYTICS -->
+                <div class="dashboard-grid analytics-grid">
+
+                    <div class="panel analytics-panel">
+
+                        <div class="panel-heading">
+                            <div>
+                                <span class="eyebrow">PERSONAL DEVELOPMENT</span>
+                                <h2>Learning Activity</h2>
+                            </div>
+
+                            <select id="chartPeriod" class="chart-select">
+                                <option value="week">This Week</option>
+                                <option value="month">This Month</option>
+                            </select>
+                        </div>
+
+                        <div class="chart-summary">
+                            <div>
+                                <h2 id="chartTotal">24.5 hrs</h2>
+                                <p>Learning hours <span>Sample data</span></p>
+                            </div>
+                            <div class="chart-growth">
+                                <i class="fa-solid fa-arrow-trend-up"></i> Learning
+                            </div>
+                        </div>
+
+                        <div class="chart-container">
+                            <div class="chart-y-axis">
+                                <span>10h</span>
+                                <span>7.5h</span>
+                                <span>5h</span>
+                                <span>2.5h</span>
+                                <span>0h</span>
+                            </div>
+
+                            <div class="chart-area">
+                                <div class="chart-grid-lines">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+
+                                <div class="chart-bars" id="chartBars"></div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <!-- CLOCK -->
+                    <div class="panel clock-panel">
+
+                        <span class="eyebrow">LOCAL TIME</span>
+
+                        <div class="clock-icon">
+                            <i class="fa-regular fa-clock"></i>
+                        </div>
+
+                        <div class="digital-clock" id="digitalClock">00:00:00</div>
+
+                        <div class="clock-date" id="clockDate"></div>
+
+                        <div class="clock-divider"></div>
+
+                        <div class="clock-bottom">
+                            <span><span class="status-dot"></span> SYSTEM ONLINE</span>
+                            <span>INDIA · IST</span>
+                        </div>
+
                     </div>
 
                 </div>
@@ -235,7 +413,10 @@
                                 <span class="eyebrow">TECHNICAL EXPERTISE</span>
                                 <h2>Skill Overview</h2>
                             </div>
-                            <button class="text-button" data-navigate="skills">View All</button>
+
+                            <button class="text-button" data-navigate="skills">
+                                View All <i class="fa-solid fa-arrow-right"></i>
+                            </button>
                         </div>
 
                         <div class="skill-item">
@@ -322,7 +503,7 @@
             </section>
 
 
-            <!-- ABOUT PAGE -->
+            <!-- ABOUT -->
             <section class="page" id="about">
 
                 <div class="page-intro">
@@ -332,40 +513,87 @@
                 </div>
 
                 <div class="panel about-card">
+
                     <div class="about-avatar">M</div>
-                    <div>
+
+                    <div class="about-content">
+
+                        <span class="eyebrow">INTRODUCTION</span>
                         <h2>Manish Gowda</h2>
+
                         <p class="gold-text">Computer Science & Engineering Student</p>
+
                         <p>
-                            I am a B.Tech CSE student with an interest in
-                            software development, data structures, web
-                            technologies and building practical solutions.
-                            I enjoy exploring new technologies and turning
-                            ideas into working projects.
+                            I am a B.Tech CSE student interested in software
+                            development, data structures, web technologies
+                            and building practical solutions. I enjoy exploring
+                            new technologies and transforming ideas into
+                            functional digital products.
                         </p>
+
                         <div class="about-details">
-                            <div><span>Education</span><strong>B.Tech CSE (IoT)</strong></div>
-                            <div><span>University</span><strong>REVA University</strong></div>
-                            <div><span>Interests</span><strong>DSA & Web Development</strong></div>
+                            <div>
+                                <span>EDUCATION</span>
+                                <strong>B.Tech CSE (IoT)</strong>
+                            </div>
+
+                            <div>
+                                <span>UNIVERSITY</span>
+                                <strong>REVA University</strong>
+                            </div>
+
+                            <div>
+                                <span>INTERESTS</span>
+                                <strong>DSA & Web Development</strong>
+                            </div>
+
                         </div>
+
+                        <button class="gold-button about-contact" data-navigate="contact">
+                            Let's Connect <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="stats-grid about-stats">
+                    <div class="stat-card">
+                        <h2>01</h2>
+                        <p>Curiosity</p>
+                    </div>
+                    <div class="stat-card">
+                        <h2>02</h2>
+                        <p>Consistency</p>
+                    </div>
+                    <div class="stat-card">
+                        <h2>03</h2>
+                        <p>Innovation</p>
+                    </div>
+                    <div class="stat-card">
+                        <h2>04</h2>
+                        <p>Growth</p>
                     </div>
                 </div>
 
             </section>
 
 
-            <!-- SKILLS PAGE -->
+            <!-- SKILLS -->
             <section class="page" id="skills">
 
                 <div class="page-intro">
                     <span class="eyebrow">MY TECHNICAL TOOLKIT</span>
                     <h1>Skills & <span>Expertise.</span></h1>
-                    <p>Technologies I use and skills I am currently developing.</p>
+                    <p>Technologies I use and skills I am developing.</p>
                 </div>
 
                 <div class="skills-page-grid">
 
                     <div class="panel">
+                        <div class="skill-category-icon">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
                         <h2>Programming</h2>
 
                         <div class="skill-item">
@@ -384,7 +612,11 @@
                         </div>
                     </div>
 
+
                     <div class="panel">
+                        <div class="skill-category-icon">
+                            <i class="fa-solid fa-globe"></i>
+                        </div>
                         <h2>Web Development</h2>
 
                         <div class="skill-item">
@@ -403,7 +635,11 @@
                         </div>
                     </div>
 
+
                     <div class="panel">
+                        <div class="skill-category-icon">
+                            <i class="fa-solid fa-database"></i>
+                        </div>
                         <h2>Tools & Database</h2>
 
                         <div class="skill-item">
@@ -427,7 +663,7 @@
             </section>
 
 
-            <!-- PROJECTS PAGE -->
+            <!-- PROJECTS -->
             <section class="page" id="projects">
 
                 <div class="page-intro">
@@ -436,59 +672,108 @@
                     <p>A collection of ideas transformed into digital experiences.</p>
                 </div>
 
-                <div class="filter-buttons">
-                    <button class="filter-btn active" data-filter="all">All Projects</button>
-                    <button class="filter-btn" data-filter="web">Web Development</button>
-                    <button class="filter-btn" data-filter="app">Applications</button>
+                <div class="project-toolbar">
+
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">All Projects</button>
+                        <button class="filter-btn" data-filter="web">Web Development</button>
+                        <button class="filter-btn" data-filter="app">Applications</button>
+                    </div>
+
+                    <span id="projectCount" class="project-count">03 PROJECTS</span>
+
                 </div>
+
 
                 <div class="projects-grid">
 
-                    <div class="project-card" data-category="web">
+                    <article class="project-card interactive-card"
+                        data-category="web"
+                        data-title="REVORA"
+                        data-description="A student-faculty document submission and physical signature coordination platform for REVA University. The system manages document forwarding, communication and approval tracking."
+                        data-tags="React, Supabase, JavaScript, CSS"
+                        data-link="#">
+
                         <div class="project-visual visual-one">
+                            <span class="project-number">01 / 03</span>
                             <i class="fa-solid fa-graduation-cap"></i>
+                            <span class="visual-caption">UNIVERSITY WORKFLOW</span>
                         </div>
+
                         <div class="project-content">
                             <span class="project-type">WEB DEVELOPMENT</span>
                             <h2>REVORA</h2>
-                            <p>Student-faculty document submission and physical signature coordination platform.</p>
-                            <div class="tech-tags"><span>React</span><span>Supabase</span><span>CSS</span></div>
-                            <a href="#" class="project-link">View Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            <p>Student-faculty document submission and signature coordination platform.</p>
+                            <div class="tech-tags">
+                                <span>React</span><span>Supabase</span><span>CSS</span>
+                            </div>
+                            <button class="project-link">Explore Project <i class="fa-solid fa-arrow-up-right-from-square"></i></button>
                         </div>
-                    </div>
 
-                    <div class="project-card" data-category="app">
+                    </article>
+
+
+                    <article class="project-card interactive-card"
+                        data-category="app"
+                        data-title="Gym Management"
+                        data-description="A gym membership management application designed to manage member records, membership information and administrative workflows."
+                        data-tags="JavaScript, Supabase, HTML, CSS"
+                        data-link="#">
+
                         <div class="project-visual visual-two">
+                            <span class="project-number">02 / 03</span>
                             <i class="fa-solid fa-dumbbell"></i>
+                            <span class="visual-caption">MEMBERSHIP SYSTEM</span>
                         </div>
+
                         <div class="project-content">
                             <span class="project-type">APPLICATION</span>
                             <h2>Gym Management</h2>
                             <p>A membership management system with member records and administrative features.</p>
-                            <div class="tech-tags"><span>JavaScript</span><span>Supabase</span><span>CSS</span></div>
-                            <a href="#" class="project-link">View Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            <div class="tech-tags">
+                                <span>JavaScript</span><span>Supabase</span><span>CSS</span>
+                            </div>
+                            <button class="project-link">Explore Project <i class="fa-solid fa-arrow-up-right-from-square"></i></button>
                         </div>
-                    </div>
 
-                    <div class="project-card" data-category="web">
+                    </article>
+
+
+                    <article class="project-card interactive-card"
+                        data-category="web"
+                        data-title="Developer Portfolio"
+                        data-description="A premium personal portfolio dashboard that showcases technical skills, projects, education, achievements and contact information."
+                        data-tags="HTML, CSS, JavaScript"
+                        data-link="#">
+
                         <div class="project-visual visual-three">
-                            <i class="fa-solid fa-code"></i>
+                            <span class="project-number">03 / 03</span>
+                            <i class="fa-solid fa-laptop-code"></i>
+                            <span class="visual-caption">DIGITAL IDENTITY</span>
                         </div>
+
                         <div class="project-content">
                             <span class="project-type">WEB DEVELOPMENT</span>
                             <h2>Developer Portfolio</h2>
                             <p>A personal digital space showcasing skills, projects and development journey.</p>
-                            <div class="tech-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
-                            <a href="#" class="project-link">View Project <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            <div class="tech-tags">
+                                <span>HTML</span><span>CSS</span><span>JavaScript</span>
+                            </div>
+                            <button class="project-link">Explore Project <i class="fa-solid fa-arrow-up-right-from-square"></i></button>
                         </div>
-                    </div>
 
+                    </article>
+
+                </div>
+
+                <div class="empty-projects" id="emptyProjects">
+                    No projects found in this category.
                 </div>
 
             </section>
 
 
-            <!-- EXPERIENCE PAGE -->
+            <!-- EXPERIENCE -->
             <section class="page" id="experience">
 
                 <div class="page-intro">
@@ -512,7 +797,7 @@
                         <span class="eyebrow">DEVELOPMENT</span>
                         <h2>Programming & DSA</h2>
                         <h3>Continuous Learning</h3>
-                        <p>Practising C++, problem solving, algorithms, data structures and programming fundamentals.</p>
+                        <p>Practising C++, algorithms, data structures and programming fundamentals.</p>
                     </div>
 
                     <div class="timeline-item">
@@ -528,7 +813,7 @@
             </section>
 
 
-            <!-- CONTACT PAGE -->
+            <!-- CONTACT -->
             <section class="page" id="contact">
 
                 <div class="page-intro">
@@ -540,7 +825,9 @@
                 <div class="contact-grid">
 
                     <div class="panel contact-info">
+
                         <h2>Get in Touch</h2>
+
                         <p>Feel free to reach out for collaborations, projects or professional conversations.</p>
 
                         <div class="contact-method">
@@ -566,19 +853,21 @@
                                 <p>linkedin.com/in/yourusername</p>
                             </div>
                         </div>
+
                     </div>
+
 
                     <form class="panel contact-form" id="contactForm">
 
                         <h2>Send a Message</h2>
 
-                        <label>Your Name</label>
+                        <label for="senderName">Your Name</label>
                         <input type="text" id="senderName" placeholder="Enter your name" required>
 
-                        <label>Email Address</label>
+                        <label for="senderEmail">Email Address</label>
                         <input type="email" id="senderEmail" placeholder="Enter your email" required>
 
-                        <label>Message</label>
+                        <label for="senderMessage">Message</label>
                         <textarea id="senderMessage" rows="5" placeholder="Write your message..." required></textarea>
 
                         <button type="submit" class="gold-button">
@@ -593,9 +882,12 @@
 
             </section>
 
+
+            <!-- FOOTER -->
             <footer class="footer">
                 <p>Designed with precision & passion.</p>
                 <span>MONARCH © 2026</span>
+                <button id="footerTop">BACK TO TOP ↑</button>
             </footer>
 
         </div>
@@ -603,6 +895,106 @@
     </main>
 
 </div>
+
+
+<!-- COMMAND PALETTE -->
+<div class="command-overlay" id="commandOverlay">
+
+    <div class="command-box">
+
+        <div class="command-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                id="commandInput"
+                placeholder="Search pages, projects, skills..."
+                autocomplete="off"
+            >
+
+            <kbd>ESC</kbd>
+        </div>
+
+        <div class="command-label">QUICK NAVIGATION</div>
+
+        <div class="command-results" id="commandResults">
+
+            <button class="command-item" data-command="dashboard">
+                <i class="fa-solid fa-border-all"></i> Dashboard
+            </button>
+
+            <button class="command-item" data-command="about">
+                <i class="fa-regular fa-user"></i> About Me
+            </button>
+
+            <button class="command-item" data-command="skills">
+                <i class="fa-solid fa-layer-group"></i> Skills
+            </button>
+
+            <button class="command-item" data-command="projects">
+                <i class="fa-solid fa-code"></i> Projects
+            </button>
+
+            <button class="command-item" data-command="experience">
+                <i class="fa-solid fa-award"></i> Experience
+            </button>
+
+            <button class="command-item" data-command="contact">
+                <i class="fa-regular fa-envelope"></i> Contact
+            </button>
+
+        </div>
+
+        <div class="command-footer">
+            <span>↑ ↓ Navigate</span>
+            <span>ENTER Select</span>
+            <span>ESC Close</span>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- PROJECT MODAL -->
+<div class="modal-overlay" id="projectModal">
+
+    <div class="project-modal">
+
+        <button class="modal-close" id="modalClose">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <span class="eyebrow">PROJECT DETAILS</span>
+
+        <div class="modal-icon">
+            <i class="fa-solid fa-code"></i>
+        </div>
+
+        <h2 id="modalTitle"></h2>
+
+        <p id="modalDescription"></p>
+
+        <div class="tech-tags" id="modalTags"></div>
+
+        <a href="#" id="modalLink" class="gold-button modal-link">
+            View Project <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- TOAST -->
+<div class="toast-container" id="toastContainer"></div>
+
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+</button>
+
 
 <script src="script.js"></script>
 

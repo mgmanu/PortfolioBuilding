@@ -1,7 +1,7 @@
 
-/* ==============================
-   1. GLOBAL SETTINGS
-================================ */
+/* =========================================
+   MONARCH - PREMIUM MARBLE PORTFOLIO
+   ========================================= */
 
 :root {
     --bg: #100f0e;
@@ -34,7 +34,7 @@ body {
     overflow-x: hidden;
 }
 
-button, input, textarea {
+button, input, textarea, select {
     font: inherit;
 }
 
@@ -42,10 +42,8 @@ button {
     cursor: pointer;
 }
 
-button:focus-visible, a:focus-visible,
-input:focus-visible, textarea:focus-visible {
-    outline: 2px solid var(--gold);
-    outline-offset: 3px;
+a {
+    color: inherit;
 }
 
 ::selection {
@@ -53,20 +51,51 @@ input:focus-visible, textarea:focus-visible {
     color: #17120b;
 }
 
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+}
 
-/* ==============================
-   2. MARBLE BACKGROUND
-================================ */
+
+/* =========================================
+   1. MARBLE BACKGROUND
+   ========================================= */
+
+body {
+    background:
+        radial-gradient(ellipse at 15% 10%, rgba(151,111,58,0.12), transparent 35%),
+        radial-gradient(ellipse at 85% 80%, rgba(105,78,45,0.10), transparent 40%),
+        linear-gradient(135deg, #100f0e, #171411 45%, #0c0b0a);
+    background-attachment: fixed;
+}
 
 body::before {
     content: "";
     position: fixed;
     inset: 0;
-    z-index: -2;
-    background:
-        radial-gradient(ellipse at 15% 15%, rgba(151,111,58,0.12), transparent 35%),
-        radial-gradient(ellipse at 85% 80%, rgba(105,78,45,0.12), transparent 40%),
-        linear-gradient(135deg, #100f0e, #171411 45%, #0c0b0a);
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.16;
+    background-image:
+        repeating-linear-gradient(
+            125deg,
+            transparent 0px,
+            transparent 75px,
+            rgba(214,183,131,0.12) 76px,
+            transparent 78px,
+            transparent 150px
+        ),
+        repeating-linear-gradient(
+            45deg,
+            transparent 0px,
+            transparent 130px,
+            rgba(255,255,255,0.035) 131px,
+            transparent 133px
+        );
 }
 
 body::after {
@@ -75,29 +104,17 @@ body::after {
     inset: 0;
     z-index: -1;
     pointer-events: none;
-    opacity: 0.19;
-    background-image:
-        repeating-linear-gradient(
-            125deg,
-            transparent 0px,
-            transparent 75px,
-            rgba(214,183,131,0.08) 76px,
-            transparent 78px,
-            transparent 150px
-        ),
-        repeating-linear-gradient(
-            45deg,
-            transparent 0px,
-            transparent 130px,
-            rgba(255,255,255,0.025) 131px,
-            transparent 133px
-        );
+    background: radial-gradient(
+        circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(198,163,106,0.055),
+        transparent 350px
+    );
 }
 
 
-/* ==============================
-   3. MAIN LAYOUT
-================================ */
+/* =========================================
+   2. MAIN LAYOUT
+   ========================================= */
 
 .app-container {
     display: flex;
@@ -111,11 +128,12 @@ body::after {
     left: 0;
     bottom: 0;
     z-index: 100;
-    padding: 28px 20px;
+    padding: 27px 19px;
     display: flex;
     flex-direction: column;
-    background: rgba(15,14,13,0.93);
+    background: rgba(15,14,13,0.94);
     backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
     border-right: 1px solid var(--border);
     transition: transform 0.35s ease;
 }
@@ -127,27 +145,28 @@ body::after {
 }
 
 
-/* ==============================
-   4. SIDEBAR
-================================ */
+/* =========================================
+   3. BRAND
+   ========================================= */
 
 .brand {
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-bottom: 38px;
+    margin-bottom: 35px;
 }
 
 .brand-icon {
-    width: 42px;
-    height: 42px;
+    width: 43px;
+    height: 43px;
     display: grid;
     place-items: center;
     font-family: 'Playfair Display', serif;
-    font-size: 24px;
+    font-size: 25px;
     color: #17120b;
     background: linear-gradient(135deg, #ead5ac, #a77c42);
     border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(198,163,106,0.16);
 }
 
 .brand h2 {
@@ -164,18 +183,29 @@ body::after {
     margin-top: 3px;
 }
 
+.mobile-close {
+    display: none;
+}
+
+
+/* =========================================
+   4. PROFILE
+   ========================================= */
+
 .profile-mini {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 15px 10px;
+    padding: 14px 10px;
     border: 1px solid var(--border);
     background: var(--glass);
     border-radius: 14px;
     margin-bottom: 35px;
 }
 
-.avatar, .top-avatar {
+.avatar,
+.top-avatar {
     display: grid;
     place-items: center;
     border-radius: 50%;
@@ -199,7 +229,22 @@ body::after {
     margin-top: 4px;
 }
 
-.nav-label, .eyebrow {
+.online-dot {
+    width: 8px;
+    height: 8px;
+    margin-left: auto;
+    background: #79bc84;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #79bc84;
+}
+
+
+/* =========================================
+   5. NAVIGATION
+   ========================================= */
+
+.nav-label,
+.eyebrow {
     font-size: 9px;
     letter-spacing: 2px;
     color: var(--gold);
@@ -238,6 +283,7 @@ body::after {
 .nav-link:hover {
     color: var(--gold-light);
     background: rgba(198,163,106,0.08);
+    transform: translateX(3px);
 }
 
 .nav-link.active {
@@ -245,6 +291,17 @@ body::after {
     border-color: var(--border);
     background: linear-gradient(90deg, rgba(198,163,106,0.15), transparent);
 }
+
+.nav-count {
+    margin-left: auto;
+    color: var(--gold);
+    font-size: 9px;
+}
+
+
+/* =========================================
+   6. SIDEBAR BOTTOM
+   ========================================= */
 
 .sidebar-bottom {
     margin-top: auto;
@@ -268,8 +325,25 @@ body::after {
     box-shadow: 0 0 9px #77bb83;
 }
 
+.sidebar-socials {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin: 22px 0;
+}
+
+.sidebar-socials a {
+    color: var(--muted);
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.sidebar-socials a:hover {
+    color: var(--gold);
+    transform: translateY(-3px);
+}
+
 .sidebar-bottom > p {
-    margin-top: 20px;
     text-align: center;
     font-size: 9px;
     color: var(--muted);
@@ -277,28 +351,29 @@ body::after {
 }
 
 
-/* ==============================
-   5. TOPBAR
-================================ */
+/* =========================================
+   7. TOPBAR
+   ========================================= */
 
 .topbar {
-    height: 90px;
-    padding: 0 42px;
+    height: 88px;
+    padding: 0 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid var(--border);
-    background: rgba(17,15,13,0.72);
+    background: rgba(17,15,13,0.77);
     backdrop-filter: blur(20px);
     position: sticky;
     top: 0;
     z-index: 50;
 }
 
-.topbar-left, .topbar-right {
+.topbar-left,
+.topbar-right {
     display: flex;
     align-items: center;
-    gap: 17px;
+    gap: 16px;
 }
 
 .breadcrumb {
@@ -318,23 +393,49 @@ body::after {
     font-weight: 500;
 }
 
-.date-display {
-    font-size: 11px;
+.search-trigger {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 10px 13px;
+    background: rgba(255,255,255,0.025);
+    border: 1px solid var(--border);
+    border-radius: 9px;
     color: var(--muted);
+    font-size: 10px;
+    transition: 0.3s;
 }
 
-.date-display i {
+.search-trigger:hover {
+    border-color: var(--gold);
     color: var(--gold);
-    margin-right: 5px;
 }
 
-.icon-button, .menu-toggle {
+.search-trigger kbd,
+.command-search kbd {
+    padding: 4px 7px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    font-size: 9px;
+    color: var(--gold);
+    background: var(--surface);
+}
+
+.icon-button,
+.menu-toggle {
     width: 38px;
     height: 38px;
     border: 1px solid var(--border);
     border-radius: 10px;
     color: var(--gold);
     background: var(--glass);
+    transition: 0.3s;
+}
+
+.icon-button:hover {
+    border-color: var(--gold);
+    background: rgba(198,163,106,0.12);
+    transform: translateY(-2px);
 }
 
 .top-avatar {
@@ -347,29 +448,127 @@ body::after {
 }
 
 
-/* ==============================
-   6. CONTENT AREA
-================================ */
+/* =========================================
+   8. NOTIFICATIONS
+   ========================================= */
+
+.notification-wrapper {
+    position: relative;
+}
+
+.notification-dot {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 8px var(--gold);
+}
+
+.notification-panel {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    width: 300px;
+    padding: 18px;
+    background: #1d1a16;
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    z-index: 200;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: 0.25s;
+}
+
+.notification-panel.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.notification-heading {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.notification-heading h3 {
+    font: 17px 'Playfair Display', serif;
+}
+
+.notification-heading button {
+    border: none;
+    color: var(--gold);
+    background: transparent;
+    font-size: 10px;
+}
+
+.notification-item {
+    display: flex;
+    gap: 12px;
+    padding: 13px 0;
+    border-top: 1px solid var(--border);
+}
+
+.notification-item > i {
+    color: var(--gold);
+    margin-top: 3px;
+}
+
+.notification-item strong {
+    font-size: 11px;
+}
+
+.notification-item p {
+    color: var(--muted);
+    font-size: 10px;
+    margin: 5px 0;
+}
+
+.notification-item small {
+    color: var(--gold);
+    font-size: 9px;
+}
+
+.notification-empty {
+    display: none;
+    font-size: 11px;
+    color: var(--muted);
+    padding: 15px 0;
+}
+
+.notification-empty.show {
+    display: block;
+}
+
+
+/* =========================================
+   9. CONTENT
+   ========================================= */
 
 .content-area {
     max-width: 1600px;
-    padding: 32px 42px;
+    padding: 32px 40px;
     margin: auto;
 }
 
 .page {
     display: none;
-    animation: fadeIn 0.4s ease;
 }
 
 .page.active {
     display: block;
+    animation: pageEnter 0.4s ease;
 }
 
-@keyframes fadeIn {
+@keyframes pageEnter {
     from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(12px);
     }
     to {
         opacity: 1;
@@ -378,12 +577,12 @@ body::after {
 }
 
 
-/* ==============================
-   7. WELCOME BANNER
-================================ */
+/* =========================================
+   10. WELCOME BANNER
+   ========================================= */
 
 .welcome-banner {
-    min-height: 315px;
+    min-height: 330px;
     padding: 38px 45px;
     position: relative;
     overflow: hidden;
@@ -398,13 +597,25 @@ body::after {
     box-shadow: 0 15px 50px rgba(0,0,0,0.25);
 }
 
+.welcome-banner::after {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    right: -100px;
+    top: -140px;
+    border: 1px solid rgba(198,163,106,0.12);
+    border-radius: 50%;
+}
+
 .welcome-content {
     position: relative;
     z-index: 2;
     max-width: 520px;
 }
 
-.welcome-content h1, .page-intro h1 {
+.welcome-content h1,
+.page-intro h1 {
     font-family: 'Playfair Display', serif;
     font-size: clamp(36px, 4vw, 55px);
     line-height: 1.15;
@@ -412,12 +623,14 @@ body::after {
     font-weight: 500;
 }
 
-.welcome-content h1 span, .page-intro h1 span {
+.welcome-content h1 span,
+.page-intro h1 span {
     color: var(--gold);
     font-style: italic;
 }
 
-.welcome-content > p, .page-intro > p {
+.welcome-content > p,
+.page-intro > p {
     max-width: 470px;
     font-size: 12px;
     color: var(--muted);
@@ -430,7 +643,8 @@ body::after {
     margin-top: 25px;
 }
 
-.gold-button, .outline-button {
+.gold-button,
+.outline-button {
     padding: 12px 19px;
     border-radius: 8px;
     font-size: 11px;
@@ -463,14 +677,30 @@ body::after {
     background: rgba(198,163,106,0.12);
 }
 
+.hero-caption {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 25px;
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: var(--muted);
+}
 
-/* ==============================
-   8. HERO VISUAL
-================================ */
+.hero-line {
+    width: 30px;
+    height: 1px;
+    background: var(--gold);
+}
+
+
+/* =========================================
+   11. HERO ANIMATION
+   ========================================= */
 
 .welcome-visual {
-    width: 270px;
-    height: 250px;
+    width: 280px;
+    height: 260px;
     position: relative;
     display: grid;
     place-items: center;
@@ -481,32 +711,54 @@ body::after {
     position: absolute;
     border: 1px solid rgba(198,163,106,0.25);
     border-radius: 50%;
-    transform: rotate(-25deg);
 }
 
 .orbit-one {
-    width: 220px;
-    height: 120px;
+    width: 230px;
+    height: 130px;
+    transform: rotate(-25deg);
 }
 
 .orbit-two {
-    width: 220px;
-    height: 220px;
+    width: 230px;
+    height: 230px;
+    border-style: dashed;
+    animation: rotateOrbit 35s linear infinite;
+}
+
+.orbit-three {
+    width: 180px;
+    height: 180px;
+    border-color: rgba(198,163,106,0.12);
+    animation: rotateOrbit 25s linear infinite reverse;
+}
+
+@keyframes rotateOrbit {
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .visual-center {
-    width: 110px;
-    height: 110px;
+    width: 115px;
+    height: 115px;
     display: grid;
     place-items: center;
     border-radius: 50%;
     background: linear-gradient(135deg, #d8b77d, #806037);
     box-shadow: 0 0 55px rgba(198,163,106,0.25);
+    animation: centerPulse 4s ease-in-out infinite;
+}
+
+@keyframes centerPulse {
+    50% {
+        box-shadow: 0 0 75px rgba(198,163,106,0.38);
+    }
 }
 
 .visual-center span {
     font-family: 'Playfair Display', serif;
-    font-size: 60px;
+    font-size: 65px;
     color: #17120b;
 }
 
@@ -527,7 +779,7 @@ body::after {
 }
 
 .tag-one {
-    top: 15px;
+    top: 12px;
     right: 0;
 }
 
@@ -550,25 +802,35 @@ body::after {
 }
 
 
-/* ==============================
-   9. SECTION HEADINGS
-================================ */
+/* =========================================
+   12. SECTION HEADINGS
+   ========================================= */
 
 .section-heading {
-    margin: 34px 0 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin: 35px 0 18px;
 }
 
-.section-heading h2, .panel-heading h2 {
+.section-heading h2,
+.panel-heading h2 {
     font-family: 'Playfair Display', serif;
     font-size: 21px;
     font-weight: 500;
     margin-top: 6px;
 }
 
+.live-label {
+    font-size: 9px;
+    letter-spacing: 1px;
+    color: var(--muted);
+}
 
-/* ==============================
-   10. STAT CARDS
-================================ */
+
+/* =========================================
+   13. STAT CARDS
+   ========================================= */
 
 .stats-grid {
     display: grid;
@@ -576,7 +838,9 @@ body::after {
     gap: 17px;
 }
 
-.stat-card, .panel, .project-card {
+.stat-card,
+.panel,
+.project-card {
     background: var(--glass);
     backdrop-filter: blur(18px);
     border: 1px solid var(--border);
@@ -588,7 +852,8 @@ body::after {
     padding: 21px;
 }
 
-.stat-card:hover, .panel:hover {
+.stat-card:hover,
+.panel:hover {
     border-color: rgba(198,163,106,0.4);
     transform: translateY(-3px);
 }
@@ -627,10 +892,17 @@ body::after {
     color: var(--muted);
 }
 
+.stat-footer {
+    display: block;
+    margin-top: 13px;
+    font-size: 9px;
+    color: var(--muted);
+}
 
-/* ==============================
-   11. DASHBOARD PANELS
-================================ */
+
+/* =========================================
+   14. DASHBOARD GRID
+   ========================================= */
 
 .dashboard-grid {
     display: grid;
@@ -661,6 +933,11 @@ body::after {
     color: var(--gold);
     font-size: 22px;
 }
+
+
+/* =========================================
+   15. SKILL BARS
+   ========================================= */
 
 .skill-item {
     margin-bottom: 21px;
@@ -693,16 +970,26 @@ body::after {
     transition: width 1.2s ease;
 }
 
+
+/* =========================================
+   16. FOCUS ITEMS
+   ========================================= */
+
 .focus-item {
     display: flex;
     align-items: center;
     gap: 14px;
     padding: 13px 0;
     border-bottom: 1px solid var(--border);
+    transition: 0.25s;
 }
 
 .focus-item:last-child {
     border: none;
+}
+
+.focus-item:hover {
+    padding-left: 7px;
 }
 
 .focus-icon {
@@ -726,9 +1013,196 @@ body::after {
 }
 
 
-/* ==============================
-   12. OTHER PAGES
-================================ */
+/* =========================================
+   17. ACTIVITY CHART
+   ========================================= */
+
+.analytics-panel {
+    min-width: 0;
+}
+
+.chart-select {
+    padding: 8px 12px;
+    background: var(--surface-light);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    color: var(--gold-light);
+    font-size: 10px;
+}
+
+.chart-summary {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.chart-summary h2 {
+    font: 29px 'Playfair Display', serif;
+    color: var(--gold-light);
+}
+
+.chart-summary p {
+    margin-top: 5px;
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.chart-summary p span {
+    font-size: 9px;
+    color: var(--gold);
+    margin-left: 5px;
+}
+
+.chart-growth {
+    font-size: 10px;
+    color: #89b78b;
+}
+
+.chart-growth i {
+    margin-right: 5px;
+}
+
+.chart-container {
+    display: flex;
+    gap: 12px;
+    height: 180px;
+}
+
+.chart-y-axis {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 24px;
+    color: var(--muted);
+    font-size: 9px;
+}
+
+.chart-area {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+}
+
+.chart-grid-lines {
+    position: absolute;
+    inset: 0 0 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    pointer-events: none;
+}
+
+.chart-grid-lines span {
+    border-top: 1px dashed rgba(198,163,106,0.12);
+}
+
+.chart-bars {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.chart-column {
+    position: relative;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    flex: 1;
+    height: calc(100% - 24px);
+    min-width: 0;
+}
+
+.chart-bar {
+    width: min(28px, 65%);
+    height: 0;
+    position: relative;
+    background: linear-gradient(180deg, #e4c995, #987044);
+    border-radius: 6px 6px 2px 2px;
+    transition: height 0.8s ease, filter 0.3s;
+    cursor: pointer;
+}
+
+.chart-bar:hover {
+    filter: brightness(1.4);
+}
+
+.chart-bar::before {
+    content: attr(data-hours) "h";
+    position: absolute;
+    top: -23px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 9px;
+    color: var(--gold-light);
+    opacity: 0;
+    transition: 0.2s;
+}
+
+.chart-bar:hover::before {
+    opacity: 1;
+}
+
+.chart-label {
+    position: absolute;
+    bottom: -21px;
+    font-size: 9px;
+    color: var(--muted);
+}
+
+
+/* =========================================
+   18. DIGITAL CLOCK
+   ========================================= */
+
+.clock-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background:
+        radial-gradient(circle at 80% 15%, rgba(198,163,106,0.14), transparent 45%),
+        var(--glass);
+}
+
+.clock-icon {
+    color: var(--gold);
+    font-size: 23px;
+    margin: 20px 0 8px;
+}
+
+.digital-clock {
+    font: clamp(27px, 3vw, 40px) 'Playfair Display', serif;
+    color: var(--gold-light);
+    letter-spacing: 2px;
+}
+
+.clock-date {
+    margin-top: 8px;
+    font-size: 11px;
+    color: var(--muted);
+}
+
+.clock-divider {
+    height: 1px;
+    width: 100%;
+    background: var(--border);
+    margin: 25px 0 15px;
+}
+
+.clock-bottom {
+    display: flex;
+    justify-content: space-between;
+    font-size: 9px;
+    color: var(--muted);
+}
+
+
+/* =========================================
+   19. OTHER PAGE HEADINGS
+   ========================================= */
 
 .page-intro {
     margin: 20px 0 30px;
@@ -737,6 +1211,11 @@ body::after {
 .page-intro h1 {
     font-size: 42px;
 }
+
+
+/* =========================================
+   20. ABOUT PAGE
+   ========================================= */
 
 .about-card {
     display: grid;
@@ -797,6 +1276,23 @@ body::after {
     color: var(--gold-light);
 }
 
+.about-contact {
+    margin-top: 25px;
+}
+
+.about-stats {
+    margin-top: 18px;
+}
+
+.about-stats .stat-card h2 {
+    margin-top: 0;
+}
+
+
+/* =========================================
+   21. SKILLS PAGE
+   ========================================= */
+
 .skills-page-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -805,19 +1301,31 @@ body::after {
 
 .skills-page-grid h2 {
     font: 20px 'Playfair Display', serif;
-    margin-bottom: 25px;
+    margin: 13px 0 25px;
+}
+
+.skill-category-icon {
+    color: var(--gold);
+    font-size: 23px;
 }
 
 
-/* ==============================
-   13. PROJECTS
-================================ */
+/* =========================================
+   22. PROJECTS PAGE
+   ========================================= */
+
+.project-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 22px;
+}
 
 .filter-buttons {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    margin-bottom: 22px;
 }
 
 .filter-btn {
@@ -830,10 +1338,17 @@ body::after {
     transition: 0.3s;
 }
 
-.filter-btn.active, .filter-btn:hover {
+.filter-btn.active,
+.filter-btn:hover {
     color: var(--gold-light);
     background: rgba(198,163,106,0.13);
     border-color: var(--gold);
+}
+
+.project-count {
+    color: var(--muted);
+    font-size: 9px;
+    white-space: nowrap;
 }
 
 .projects-grid {
@@ -844,11 +1359,13 @@ body::after {
 
 .project-card {
     overflow: hidden;
+    cursor: pointer;
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-6px);
     border-color: var(--gold);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
 }
 
 .project-card.hidden {
@@ -856,23 +1373,50 @@ body::after {
 }
 
 .project-visual {
-    height: 150px;
+    height: 160px;
+    position: relative;
     display: grid;
     place-items: center;
+    overflow: hidden;
     font-size: 50px;
     color: var(--gold);
 }
 
+.project-visual i {
+    transition: 0.5s;
+}
+
+.project-card:hover .project-visual i {
+    transform: scale(1.2) rotate(-5deg);
+}
+
 .visual-one {
-    background: linear-gradient(135deg, #30251b, #171512);
+    background: radial-gradient(circle, #57412a, #171512 75%);
 }
 
 .visual-two {
-    background: linear-gradient(135deg, #29241d, #17120f);
+    background: radial-gradient(circle, #51402c, #171512 75%);
 }
 
 .visual-three {
-    background: linear-gradient(135deg, #322c20, #171512);
+    background: radial-gradient(circle, #4c412d, #171512 75%);
+}
+
+.project-number {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 9px;
+    letter-spacing: 1px;
+    color: var(--gold-light);
+}
+
+.visual-caption {
+    position: absolute;
+    bottom: 13px;
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: var(--muted);
 }
 
 .project-content {
@@ -918,16 +1462,30 @@ body::after {
     text-decoration: none;
     color: var(--gold);
     font-size: 10px;
+    border: none;
+    background: transparent;
 }
 
 .project-link i {
     margin-left: 5px;
 }
 
+.empty-projects {
+    display: none;
+    text-align: center;
+    color: var(--muted);
+    padding: 40px;
+    font-size: 12px;
+}
 
-/* ==============================
-   14. EXPERIENCE TIMELINE
-================================ */
+.empty-projects.show {
+    display: block;
+}
+
+
+/* =========================================
+   23. EXPERIENCE
+   ========================================= */
 
 .timeline-panel {
     padding: 35px;
@@ -973,9 +1531,9 @@ body::after {
 }
 
 
-/* ==============================
-   15. CONTACT
-================================ */
+/* =========================================
+   24. CONTACT
+   ========================================= */
 
 .contact-grid {
     display: grid;
@@ -990,7 +1548,8 @@ body::after {
     margin: 12px 0 25px;
 }
 
-.contact-info h2, .contact-form h2 {
+.contact-info h2,
+.contact-form h2 {
     font: 23px 'Playfair Display', serif;
     margin-bottom: 10px;
 }
@@ -1029,7 +1588,8 @@ body::after {
     color: var(--gold-light);
 }
 
-.contact-form input, .contact-form textarea {
+.contact-form input,
+.contact-form textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid var(--border);
@@ -1041,7 +1601,8 @@ body::after {
     resize: vertical;
 }
 
-.contact-form input:focus, .contact-form textarea:focus {
+.contact-form input:focus,
+.contact-form textarea:focus {
     border-color: var(--gold);
 }
 
@@ -1057,25 +1618,297 @@ body::after {
 }
 
 
-/* ==============================
-   16. FOOTER
-================================ */
+/* =========================================
+   25. FOOTER
+   ========================================= */
 
 .footer {
     margin-top: 45px;
     padding: 20px 0;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    gap: 12px;
     border-top: 1px solid var(--border);
     color: var(--muted);
     font-size: 9px;
     letter-spacing: 1px;
 }
 
+.footer button {
+    border: none;
+    background: transparent;
+    color: var(--gold);
+    font-size: 9px;
+}
 
-/* ==============================
-   17. LIGHT THEME
-================================ */
+
+/* =========================================
+   26. COMMAND PALETTE
+   ========================================= */
+
+.command-overlay,
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 500;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 15vh 20px 20px;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(12px);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.25s;
+}
+
+.command-overlay.show,
+.modal-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.command-box {
+    width: 100%;
+    max-width: 550px;
+    background: #191714;
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    overflow: hidden;
+    transform: translateY(-15px);
+    transition: 0.25s;
+    box-shadow: 0 25px 80px rgba(0,0,0,0.6);
+}
+
+.command-overlay.show .command-box {
+    transform: translateY(0);
+}
+
+.command-search {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 20px;
+    border-bottom: 1px solid var(--border);
+    color: var(--gold);
+}
+
+.command-search input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: white;
+    font-size: 13px;
+}
+
+.command-label {
+    padding: 17px 20px 10px;
+    color: var(--muted);
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.command-results {
+    padding: 5px 10px 15px;
+}
+
+.command-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 13px;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    text-align: left;
+    color: var(--text);
+    font-size: 12px;
+    transition: 0.2s;
+}
+
+.command-item i {
+    width: 20px;
+    color: var(--gold);
+}
+
+.command-item:hover,
+.command-item.selected {
+    background: rgba(198,163,106,0.12);
+    color: var(--gold-light);
+}
+
+.command-item.filtered-out {
+    display: none;
+}
+
+.command-empty {
+    padding: 20px;
+    color: var(--muted);
+    text-align: center;
+    font-size: 11px;
+}
+
+.command-footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 13px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 9px;
+}
+
+
+/* =========================================
+   27. PROJECT MODAL
+   ========================================= */
+
+.modal-overlay {
+    align-items: center;
+    padding-top: 20px;
+}
+
+.project-modal {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    padding: 35px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background:
+        radial-gradient(circle at 90% 10%, rgba(198,163,106,0.13), transparent 35%),
+        #191714;
+    box-shadow: 0 25px 80px rgba(0,0,0,0.6);
+    transform: scale(0.94);
+    transition: 0.25s;
+}
+
+.modal-overlay.show .project-modal {
+    transform: scale(1);
+}
+
+.modal-close {
+    position: absolute;
+    top: 17px;
+    right: 17px;
+    width: 34px;
+    height: 34px;
+    color: var(--gold);
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+.modal-icon {
+    width: 65px;
+    height: 65px;
+    display: grid;
+    place-items: center;
+    margin: 22px 0;
+    border-radius: 15px;
+    background: rgba(198,163,106,0.12);
+    color: var(--gold);
+    font-size: 26px;
+}
+
+.project-modal h2 {
+    font: 30px 'Playfair Display', serif;
+    margin-bottom: 12px;
+}
+
+.project-modal > p {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.9;
+}
+
+.project-modal .tech-tags {
+    margin: 22px 0;
+}
+
+.modal-link {
+    display: inline-block;
+    text-decoration: none;
+}
+
+
+/* =========================================
+   28. TOAST MESSAGES
+   ========================================= */
+
+.toast-container {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    z-index: 800;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    min-width: 250px;
+    padding: 15px 18px;
+    background: #211d17;
+    border: 1px solid var(--gold);
+    border-radius: 10px;
+    color: var(--gold-light);
+    font-size: 11px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    animation: toastIn 0.3s ease;
+}
+
+@keyframes toastIn {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+/* =========================================
+   29. BACK TO TOP
+   ========================================= */
+
+.back-to-top {
+    position: fixed;
+    right: 25px;
+    bottom: 90px;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: #211d17;
+    color: var(--gold);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: 0.3s;
+    z-index: 90;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    background: var(--gold);
+    color: #17120b;
+}
+
+
+/* =========================================
+   30. LIGHT THEME
+   ========================================= */
 
 body.light-theme {
     --bg: #e8e0d2;
@@ -1084,22 +1917,20 @@ body.light-theme {
     --text: #28221b;
     --muted: #766d61;
     --border: rgba(120,91,50,0.2);
-    --glass: rgba(249,244,235,0.86);
-}
+    --glass: rgba(249,244,235,0.88);
 
-body.light-theme::before {
     background:
         radial-gradient(ellipse at 15% 15%, rgba(175,137,79,0.14), transparent 40%),
         linear-gradient(135deg, #e9dfcf, #f1e9dc);
 }
 
-body.light-theme::after {
-    opacity: 0.08;
+body.light-theme::before {
+    opacity: 0.07;
 }
 
 body.light-theme .sidebar,
 body.light-theme .topbar {
-    background: rgba(237,228,214,0.94);
+    background: rgba(237,228,214,0.95);
 }
 
 body.light-theme .welcome-banner {
@@ -1116,10 +1947,38 @@ body.light-theme .contact-form textarea {
     color: #28221b;
 }
 
+body.light-theme .notification-panel,
+body.light-theme .command-box,
+body.light-theme .project-modal {
+    background: #f2eadd;
+    color: #28221b;
+}
 
-/* ==============================
-   18. RESPONSIVE DESIGN
-================================ */
+body.light-theme .command-search input {
+    color: #28221b;
+}
+
+body.light-theme .notification-item strong,
+body.light-theme .command-item {
+    color: #28221b;
+}
+
+body.light-theme .chart-select {
+    color: #57442b;
+}
+
+body.light-theme .back-to-top {
+    background: #e8ddca;
+}
+
+body.light-theme .welcome-content > p {
+    color: #665d51;
+}
+
+
+/* =========================================
+   31. RESPONSIVE TABLET
+   ========================================= */
 
 @media (max-width: 1100px) {
 
@@ -1132,13 +1991,23 @@ body.light-theme .contact-form textarea {
     }
 
     .welcome-visual {
-        transform: scale(0.8);
+        transform: scale(0.85);
     }
 
     .content-area {
         padding: 25px;
     }
+
+    .topbar {
+        padding: 0 25px;
+    }
+
 }
+
+
+/* =========================================
+   32. RESPONSIVE MOBILE
+   ========================================= */
 
 @media (max-width: 768px) {
 
@@ -1154,6 +2023,15 @@ body.light-theme .contact-form textarea {
         transform: translateX(0);
     }
 
+    .mobile-close {
+        display: block;
+        margin-left: auto;
+        border: none;
+        color: var(--gold);
+        background: transparent;
+        font-size: 18px;
+    }
+
     .main-content {
         width: 100%;
         margin-left: 0;
@@ -1165,10 +2043,15 @@ body.light-theme .contact-form textarea {
 
     .topbar {
         height: 75px;
-        padding: 0 18px;
+        padding: 0 17px;
     }
 
-    .date-display {
+    .search-trigger {
+        padding: 10px;
+    }
+
+    .search-trigger span,
+    .search-trigger kbd {
         display: none;
     }
 
@@ -1204,7 +2087,21 @@ body.light-theme .contact-form textarea {
     .projects-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .notification-panel {
+        right: -45px;
+    }
+
+    .top-avatar {
+        display: none;
+    }
+
 }
+
+
+/* =========================================
+   33. RESPONSIVE SMALL MOBILE
+   ========================================= */
 
 @media (max-width: 480px) {
 
@@ -1237,12 +2134,43 @@ body.light-theme .contact-form textarea {
         font-size: 16px;
     }
 
-    .top-avatar {
-        display: none;
+    .project-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
     }
 
     .footer {
-        gap: 12px;
         flex-wrap: wrap;
     }
+
+    .project-modal {
+        padding: 25px;
+    }
+
+    .command-footer {
+        gap: 8px;
+        font-size: 8px;
+    }
+
+    .notification-panel {
+        width: min(300px, calc(100vw - 25px));
+    }
+
+}
+
+
+/* =========================================
+   34. ACCESSIBILITY / MOTION
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+
 }
